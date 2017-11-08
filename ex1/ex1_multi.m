@@ -95,6 +95,14 @@ plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
 
+%[theta1, J1] = gradientDescentMulti(X, y, theta, 0.3, 50);
+%[theta2, J2] = gradientDescentMulti(X, y, theta, 0.1, 50);
+%[theta3, J3] = gradientDescentMulti(X, y, theta, 0.03, 50);
+%plot(1:50, J1(1:50), 'b');
+%hold on;
+%plot(1:50, J2(1:50), 'r');
+%plot(1:50, J3(1:50), 'k');
+
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
 fprintf(' %f \n', theta);
@@ -104,7 +112,9 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+X_sample = [1650;3];
+[X_sample] = featureNormalize(X_sample);
+price = theta' * [1;X_sample];
 
 
 % ============================================================
@@ -149,7 +159,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+price = theta' * [1;1650;3];
 
 
 % ============================================================
